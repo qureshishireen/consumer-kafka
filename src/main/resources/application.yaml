@@ -7,5 +7,11 @@ spring:
     kafka:
       consumer:
       bootstrap-server: localhost:9092
-      group-id : consumer-groupid1
+      group-id : consumer-groupid2
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        # Crucial: Allows Spring to trust your UserDto package
+        spring.json.trusted.packages: "*"
+      # group-id: ${spring.application.name}
 
